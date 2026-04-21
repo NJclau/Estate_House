@@ -1,0 +1,2151 @@
+/* ============================================
+   EstateClaw Design System Tokens
+   Source: Estate2.0 Website Spec Section 2
+   ============================================ */
+
+/* --- Colors --- */
+:root {
+  --brand-green: #1a6b3c;
+  --brand-green-dark: #0f4a28;
+  --brand-cream: #f5f0e8;
+  --brand-cream-dark: #ede8dc;
+  --text-primary: #18181b;
+  --text-secondary: #71717a;
+  --text-light: #94a3b8;
+  --verified-badge: #2e7d32;
+  --cta-whatsapp: #25d366;
+  --cta-whatsapp-dark: #1ebe5d;
+  --danger: #c62828;
+  --border: #e2d9cd;
+  --white: #ffffff;
+}
+
+/* --- Typography --- */
+:root {
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* --- Spacing (4px base) --- */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+}
+
+/* --- Radii --- */
+:root {
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+}
+
+/* --- Shadows --- */
+:root {
+  --shadow-card: 0 2px 8px rgba(26, 75, 49, 0.08);
+  --shadow-float: 0 4px 20px rgba(26, 75, 49, 0.12);
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--text-primary);
+  background-color: var(--brand-cream);
+  line-height: 1.5;
+}
+
+/* Headings: Instrument Serif */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+/* Price elements: JetBrains Mono */
+.price,
+[data-type="price"] {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background-color: var(--brand-cream-dark);
+  padding: var(--space-6) var(--space-4);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.footer-disclosure,
+.footer-disclaimer {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+/* Focus ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   Hero — Split-screen layout
+   Spec: Section 4.1.1
+   ============================================ */
+
+.hero {
+  min-height: 100dvh;
+  background-color: var(--brand-cream);
+}
+
+.hero__container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* LEFT COLUMN — content */
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-8) var(--space-6);
+  order: 2;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--brand-green);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-4);
+}
+
+.hero__headline {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.hero__subline {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+  max-width: 420px;
+}
+
+.hero__cta {
+  margin-bottom: var(--space-3);
+}
+
+.hero__trust {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* RIGHT COLUMN — Clement photo */
+.hero__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  order: 1;
+  overflow: hidden;
+}
+
+.hero__image {
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Desktop: 55/45 split */
+@media (min-width: 768px) {
+  .hero__container {
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    min-height: 100dvh;
+  }
+
+  .hero__content {
+    order: 1;
+    padding: var(--space-12) var(--space-8);
+  }
+
+  .hero__headline {
+    font-size: 56px;
+    line-height: 72px;
+  }
+
+  .hero__subline {
+    font-size: 18px;
+  }
+
+  .hero__image-wrapper {
+    order: 2;
+    height: 100%;
+    min-height: 100dvh;
+  }
+}
+
+/* ============================================
+   WhatsApp Button
+   ============================================ */
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 56px;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.whatsapp-btn--primary {
+  background-color: var(--cta-whatsapp);
+  color: var(--white);
+}
+
+.whatsapp-btn--primary:hover {
+  background-color: var(--cta-whatsapp-dark);
+}
+
+.whatsapp-btn--secondary {
+  background-color: transparent;
+  color: var(--brand-green);
+  border: 1.5px solid var(--brand-green);
+}
+
+.whatsapp-btn--secondary:hover {
+  background-color: var(--brand-green);
+  color: var(--white);
+}
+
+.whatsapp-btn--full {
+  width: 100%;
+}
+
+.whatsapp-btn__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.whatsapp-btn__label {
+  white-space: nowrap;
+}
+
+/* ============================================
+   Trust Bar
+   Source: Estate2.0 Website Spec Section 4.1.3
+   ============================================ */
+
+.trust-bar {
+  background-color: var(--brand-cream-dark);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: var(--space-6) var(--space-4);
+}
+
+.trust-bar__list {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  list-style: none;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.trust-item__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--brand-green);
+}
+
+.trust-item__label {
+  line-height: 1.3;
+}
+
+.trust-item--counter {
+  color: var(--brand-green);
+}
+
+.deal-counter {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Desktop: horizontal row */
+@media (min-width: 768px) {
+  .trust-bar__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-8);
+  }
+
+  .trust-item {
+    font-size: 15px;
+  }
+}
+
+/* ============================================
+   Testimonial Strip
+   Source: Estate2.0 Website Spec Section 4.1.4
+   ============================================ */
+
+.testimonial-strip {
+  padding: var(--space-12) var(--space-4);
+  background-color: var(--brand-cream);
+}
+
+.testimonial-strip__grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.testimonial-card {
+  background-color: var(--brand-cream-dark);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.testimonial-card__quote {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-style: italic;
+}
+
+.testimonial-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.testimonial-card__author {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.testimonial-card__date {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.testimonial-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--verified-badge);
+}
+
+/* Desktop: 3-column */
+@media (min-width: 768px) {
+  .testimonial-strip__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   Property Card
+   Source: Estate2.0 Website Spec Section 4.2.3
+   ============================================ */
+
+.property-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  height: 100%;
+}
+
+.property-card--featured {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-float);
+}
+
+.property-card__photo {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--brand-cream-dark);
+}
+
+.property-card--featured .property-card__photo {
+  aspect-ratio: auto;
+  flex: 1;
+  min-height: 320px;
+}
+
+.property-card__image {
+  object-fit: cover;
+}
+
+/* Verified badge */
+.verified-badge {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--verified-badge);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  z-index: 2;
+}
+
+/* SOLD ribbon */
+.sold-ribbon {
+  position: absolute;
+  top: var(--space-3);
+  right: calc(var(--space-3) * -1);
+  background-color: var(--danger);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  padding: var(--space-1) var(--space-6);
+  transform: rotate(45deg);
+  transform-origin: top right;
+  z-index: 3;
+  letter-spacing: 0.05em;
+}
+
+/* Unavailable overlay */
+.unavailable-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+  z-index: 1;
+}
+
+/* Featured overlay */
+.featured-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-6);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+  z-index: 2;
+}
+
+.featured-overlay__primary {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.featured-overlay__secondary {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Content area */
+.property-card__content {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.property-card--featured .property-card__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-6);
+  z-index: 3;
+}
+
+/* Price */
+.property-card__price {
+  margin-bottom: var(--space-1);
+}
+
+.property-card__price-primary {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--brand-green);
+}
+
+.property-card__price-secondary {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Location */
+.property-card__location {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* Proximity */
+.property-card__proximity {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-light);
+  margin-bottom: var(--space-2);
+}
+
+/* CTA */
+.property-card__cta {
+  display: block;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  margin-top: var(--space-2);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.property-card__cta--primary {
+  background-color: var(--cta-whatsapp);
+  color: var(--white);
+  border: none;
+}
+
+.property-card__cta--primary:hover {
+  background-color: var(--cta-whatsapp-dark);
+}
+
+.property-card__cta--secondary {
+  background-color: transparent;
+  color: var(--brand-green);
+  border: 1.5px solid var(--brand-green);
+}
+
+.property-card__cta--secondary:hover {
+  background-color: var(--brand-green);
+  color: var(--white);
+}
+
+/* ============================================
+   Property Grid (Bento)
+   Source: Estate2.0 Website Spec Section 4.1.5
+   ============================================ */
+
+.property-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.property-grid__featured {
+  min-height: 400px;
+}
+
+.property-grid__stacked {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+/* Desktop Bento: 2fr | 1fr over 1fr */
+@media (min-width: 768px) {
+  .property-grid {
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .property-grid__featured {
+    min-height: 520px;
+  }
+
+  .property-grid__stacked {
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+/* ============================================
+   Skeleton Loading
+   ============================================ */
+
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton-pulse {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  background-color: var(--brand-cream-dark);
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-tile {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.skeleton-photo {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+.skeleton-photo--featured {
+  aspect-ratio: auto;
+  flex: 1;
+  min-height: 320px;
+}
+
+.skeleton-content {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.skeleton-line {
+  height: 16px;
+}
+
+.skeleton-line--price {
+  width: 40%;
+}
+
+.skeleton-line--location {
+  width: 70%;
+}
+
+.skeleton-line--cta {
+  width: 100%;
+  height: 40px;
+  margin-top: var(--space-2);
+}
+
+/* ============================================
+   Error State
+   ============================================ */
+
+.property-grid__error {
+  max-width: 400px;
+  margin: var(--space-12) auto;
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+}
+
+.property-grid__error-title {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.property-grid__error-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.property-grid__retry-btn {
+  padding: var(--space-3) var(--space-6);
+  background-color: transparent;
+  color: var(--brand-green);
+  border: 1.5px solid var(--brand-green);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.property-grid__retry-btn:hover {
+  background-color: var(--brand-green);
+  color: var(--white);
+}
+
+/* ============================================
+   Empty State
+   Source: Estate2.0 Website Spec Section 4.6
+   ============================================ */
+
+.empty-state {
+  max-width: 480px;
+  margin: var(--space-12) auto;
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.empty-state__illustration {
+  height: 120px;
+  width: auto;
+  margin-bottom: var(--space-2);
+}
+
+.empty-state__title {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.empty-state__body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 360px;
+}
+
+.empty-state__cta {
+  width: 100%;
+  max-width: 320px;
+  margin-top: var(--space-2);
+}
+
+/* ============================================
+   Section Placeholder (development only)
+   ============================================ */
+
+.section-placeholder {
+  padding: var(--space-12) var(--space-4);
+  text-align: center;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  border-bottom: 1px dashed var(--border);
+}
+
+/* ============================================
+   Photo Carousel
+   Source: Estate2.0 Website Spec Section 4.3.1
+   ============================================ */
+
+.photo-carousel {
+  position: relative;
+  width: 100%;
+  background-color: var(--brand-cream-dark);
+}
+
+.photo-carousel__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.photo-carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.photo-carousel__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  cursor: pointer;
+}
+
+.photo-carousel__image {
+  object-fit: cover;
+}
+
+.photo-carousel__dots {
+  position: absolute;
+  bottom: var(--space-3);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--space-1);
+  z-index: 2;
+}
+
+.photo-carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 150ms ease;
+}
+
+.photo-carousel__dot--active {
+  background-color: var(--white);
+}
+
+/* ============================================
+   Photo Lightbox (native <dialog>)
+   ============================================ */
+
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.92);
+  z-index: 1000;
+}
+
+.photo-lightbox::backdrop {
+  background-color: rgba(0, 0, 0, 0.92);
+}
+
+.photo-lightbox__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: pan-y;
+}
+
+.photo-lightbox__image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+}
+
+.photo-lightbox__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.photo-lightbox__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--white);
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 150ms ease;
+}
+
+.photo-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.photo-lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--white);
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 150ms ease;
+}
+
+.photo-lightbox__nav:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.photo-lightbox__nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.photo-lightbox__nav--prev {
+  left: var(--space-4);
+}
+
+.photo-lightbox__nav--next {
+  right: var(--space-4);
+}
+
+.photo-lightbox__counter {
+  position: absolute;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--white);
+  z-index: 10;
+}
+
+/* ============================================
+   Property Detail Page
+   Source: Estate2.0 Website Spec Section 4.3
+   ============================================ */
+
+.property-detail {
+  min-height: 100dvh;
+  background-color: var(--brand-cream);
+  padding-bottom: var(--space-16);
+}
+
+.property-detail__layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+.property-detail__sidebar {
+  display: none;
+}
+
+.property-detail__sidebar-mobile {
+  display: block;
+  padding: 0 var(--space-4);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Price block */
+.property-detail__price-block {
+  margin-bottom: var(--space-4);
+}
+
+.property-detail__price-primary {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--brand-green);
+}
+
+.property-detail__price-secondary {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+/* Title + location */
+.property-detail__title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.property-detail__location {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+/* Proximity tags */
+.property-detail__proximity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  margin-bottom: var(--space-6);
+}
+
+.property-detail__proximity-tag {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-light);
+  background-color: var(--brand-cream-dark);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  text-transform: capitalize;
+}
+
+/* Features */
+.property-detail__features {
+  margin-bottom: var(--space-8);
+}
+
+.property-detail__features h2 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  margin-bottom: var(--space-4);
+}
+
+.property-detail__features-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2) var(--space-6);
+  font-family: var(--font-body);
+}
+
+.property-detail__features-list dt {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.property-detail__features-list dd {
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+/* Not found */
+.property-detail__not-found {
+  max-width: 480px;
+  margin: var(--space-16) auto;
+  text-align: center;
+  padding: var(--space-8);
+}
+
+.property-detail__not-found h1 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  margin-bottom: var(--space-3);
+}
+
+.property-detail__not-found p {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.property-detail__not-found-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.property-detail__browse-link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-green);
+  text-decoration: none;
+  padding: var(--space-3) var(--space-6);
+  border: 1.5px solid var(--brand-green);
+  border-radius: var(--radius-sm);
+  transition: background-color 150ms ease;
+}
+
+.property-detail__browse-link:hover {
+  background-color: var(--brand-green);
+  color: var(--white);
+}
+
+/* Desktop: two-column layout */
+@media (min-width: 768px) {
+  .property-detail__layout {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .property-detail__sidebar {
+    display: block;
+  }
+
+  .property-detail__sidebar-mobile {
+    display: none;
+  }
+
+  .property-detail__title {
+    font-size: 32px;
+  }
+}
+
+/* ============================================
+   Verification Timeline
+   Source: Estate2.0 Website Spec Section 4.3.3
+   ============================================ */
+
+.verification-timeline {
+  margin-top: var(--space-8);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--border);
+}
+
+.verification-timeline__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  margin-bottom: var(--space-4);
+}
+
+.verification-timeline ol {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.verification-timeline__step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.verification-timeline__marker {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--verified-badge);
+  color: var(--white);
+  border-radius: var(--radius-full);
+}
+
+.verification-timeline__content {
+  flex: 1;
+}
+
+.verification-timeline__label {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.verification-timeline__date {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+.verification-timeline__detail {
+  color: var(--text-light);
+}
+
+.verification-timeline__toggle {
+  margin-top: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brand-green);
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.verification-timeline__toggle:hover {
+  background-color: var(--brand-cream-dark);
+}
+
+/* ============================================
+   Clement Sidebar
+   Source: Estate2.0 Website Spec Section 4.3.4
+   ============================================ */
+
+.clement-sidebar {
+  background-color: var(--brand-cream-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  border: 1px solid var(--border);
+  position: sticky;
+  top: var(--space-4);
+}
+
+.clement-sidebar__profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.clement-sidebar__avatar {
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.clement-sidebar__name {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.clement-sidebar__verified {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+.clement-sidebar__response {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+}
+
+/* ============================================
+   USD Toggle
+   Source: Estate2.0 Website Spec Section 4.3.2
+   ============================================ */
+
+.usd-toggle {
+  margin-top: var(--space-1);
+}
+
+.usd-toggle__button {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brand-green);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+}
+
+.usd-toggle__display {
+  margin-top: var(--space-2);
+}
+
+.usd-toggle__amount {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.usd-toggle__disclaimer {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: var(--space-1);
+}
+
+/* ============================================
+   Sticky Bottom CTA
+   Source: Estate2.0 Website Spec Section 4.3.5
+   ============================================ */
+
+.sticky-bottom-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--white);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+/* Hide sticky CTA on desktop where sidebar is visible */
+@media (min-width: 768px) {
+  .sticky-bottom-cta {
+    display: none;
+  }
+}
+
+/* ============================================
+   Filter Bar (Desktop)
+   Source: Estate2.0 Website Spec Section 4.2.1
+   ============================================ */
+
+.filter-bar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.filter-bar__pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  background-color: var(--brand-green);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+}
+
+.filter-pill button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--white);
+  font-size: 11px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.filter-pill button:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.filter-bar__count {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-left: var(--space-2);
+}
+
+.filter-bar__controls {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.filter-bar__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 160px;
+  flex: 1;
+}
+
+.filter-bar__label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.filter-bar__select {
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-primary);
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 32px;
+}
+
+.filter-bar__select:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 2px;
+}
+
+.filter-bar__clear {
+  padding: var(--space-2) var(--space-4);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 150ms ease;
+  margin-bottom: 1px;
+}
+
+.filter-bar__clear:hover {
+  border-color: var(--brand-green);
+  color: var(--brand-green);
+}
+
+/* ============================================
+   Filter Bottom Sheet (Mobile)
+   Source: Estate2.0 Website Spec Section 4.2.2
+   ============================================ */
+
+.filter-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.filter-trigger-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: var(--brand-green);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+}
+
+.filter-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.filter-sheet {
+  width: 100%;
+  max-height: 85vh;
+  background-color: var(--white);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: var(--space-4) var(--space-6) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  animation: slide-up 200ms ease-out;
+  overflow-y: auto;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.filter-sheet__handle {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-2) 0;
+}
+
+.filter-sheet__handle-bar {
+  width: 40px;
+  height: 4px;
+  background-color: var(--border);
+  border-radius: var(--radius-full);
+}
+
+.filter-sheet__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  margin-bottom: var(--space-2);
+}
+
+.filter-sheet__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.filter-sheet__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.filter-sheet__field label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.filter-sheet__field select {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-primary);
+  background-color: var(--brand-cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2371717A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.filter-sheet__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.filter-sheet__apply {
+  width: 100%;
+  padding: var(--space-3);
+  background-color: var(--cta-whatsapp);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.filter-sheet__apply:hover {
+  background-color: var(--cta-whatsapp-dark);
+}
+
+.filter-sheet__clear {
+  width: 100%;
+  padding: var(--space-3);
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ============================================
+   Listings Page
+   Source: Estate2.0 Website Spec Section 4.2
+   ============================================ */
+
+.listings-page {
+  min-height: 100dvh;
+  background-color: var(--brand-cream);
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-16);
+}
+
+.listings-page__header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.listings-page__title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.listings-page__count {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+.listings-page__filter-desktop {
+  display: none;
+  margin-bottom: var(--space-6);
+}
+
+.listings-page__filter-mobile {
+  display: block;
+  padding: 0 var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.listings-page__error {
+  max-width: 400px;
+  margin: var(--space-12) auto;
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+}
+
+.listings-page__error-title {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.listings-page__error-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .listings-page__filter-desktop {
+    display: block;
+  }
+
+  .listings-page__filter-mobile {
+    display: none;
+  }
+
+  .listings-page__title {
+    font-size: 40px;
+  }
+}
+
+/* ============================================
+   Returning Banner
+   Source: Estate2.0 Website Spec Section 8
+   ============================================ */
+
+.returning-banner {
+  background-color: var(--brand-cream-dark);
+  border-left: 3px solid var(--brand-green);
+  padding: var(--space-4) var(--space-6);
+}
+
+.returning-banner__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.returning-banner__content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  flex: 1;
+}
+
+.returning-banner__headline {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.returning-banner__cta {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background-color: transparent;
+  border: 1.5px solid var(--brand-green);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-green);
+  text-decoration: none;
+  transition: all 150ms ease;
+  white-space: nowrap;
+}
+
+.returning-banner__cta:hover {
+  background-color: var(--brand-green);
+  color: var(--white);
+}
+
+.returning-banner__dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.returning-banner__dismiss:hover {
+  background-color: var(--border);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   Clement Profile
+   Source: Estate2.0 Website Spec Section 9
+   ============================================ */
+
+.clement-profile {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  text-align: center;
+}
+
+.clement-profile__photo {
+  flex-shrink: 0;
+}
+
+.clement-profile__avatar {
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 3px solid var(--white);
+  box-shadow: var(--shadow-card);
+}
+
+.clement-profile__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.clement-profile__name {
+  font-family: var(--font-display);
+  font-size: 28px;
+}
+
+.clement-profile__title {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--brand-green);
+  font-weight: 500;
+}
+
+.clement-profile__bio {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: var(--space-2) auto 0;
+}
+
+.clement-profile__claims {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.clement-profile__claims li {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-green);
+  padding: var(--space-1) var(--space-3);
+  background-color: var(--brand-cream-dark);
+  border-radius: var(--radius-full);
+}
+
+@media (min-width: 768px) {
+  .clement-profile {
+    flex-direction: row;
+    text-align: left;
+    gap: var(--space-8);
+  }
+
+  .clement-profile__bio {
+    margin-left: 0;
+  }
+
+  .clement-profile__claims {
+    justify-content: flex-start;
+  }
+}
+
+/* ============================================
+   How It Works
+   Source: Estate2.0 Website Spec Section 9
+   ============================================ */
+
+.how-it-works {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+}
+
+.how-it-works__title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.how-it-works__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  counter-reset: step;
+}
+
+.how-it-works__step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.how-it-works__number {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--brand-green);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+}
+
+.how-it-works__text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   About Page
+   Source: Estate2.0 Website Spec Section 9
+   ============================================ */
+
+.about-page {
+  min-height: 100dvh;
+  background-color: var(--brand-cream);
+  padding-bottom: var(--space-16);
+}
+
+.about-hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-4) var(--space-8);
+  text-align: center;
+}
+
+.about-hero__headline {
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 1.2;
+  margin-bottom: var(--space-3);
+}
+
+.about-hero__subline {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-trust {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+}
+
+.about-trust__title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.about-trust__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.about-trust__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-primary);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.about-trust__item svg {
+  flex-shrink: 0;
+  color: var(--brand-green);
+}
+
+.about-cta {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+}
+
+.about-cta__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  margin-bottom: var(--space-4);
+}
+
+/* ============================================
+   Privacy Page
+   Source: Estate2.0 Website Spec Section 9
+   ============================================ */
+
+.privacy-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-4) var(--space-16);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.privacy-page__title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  margin-bottom: var(--space-1);
+}
+
+.privacy-page__updated {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.privacy-page__intro {
+  font-size: 16px;
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--border);
+}
+
+.privacy-page section {
+  margin-bottom: var(--space-8);
+}
+
+.privacy-page h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin-bottom: var(--space-3);
+  color: var(--text-primary);
+}
+
+.privacy-page p {
+  margin-bottom: var(--space-3);
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.privacy-page ul {
+  margin-bottom: var(--space-3);
+  padding-left: var(--space-6);
+}
+
+.privacy-page li {
+  margin-bottom: var(--space-1);
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.privacy-page strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.privacy-page__contact {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  background-color: var(--brand-cream-dark);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.privacy-page__whatsapp {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.privacy-page__whatsapp:hover {
+  color: var(--brand-green-dark);
+}
+
+/* ============================================
+   Utility: Screen-reader only
+   ============================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
